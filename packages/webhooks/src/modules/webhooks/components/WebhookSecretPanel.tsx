@@ -40,7 +40,7 @@ export function WebhookSecretPanel({ secret, onClose }: WebhookSecretPanelProps)
         <Notice variant="warning" compact>
           {t('webhooks.form.secretUsageTip')}
         </Notice>
-        <div className="flex items-start gap-3 rounded-md border bg-muted/40 p-4">
+        <div className="flex items-start gap-3 rounded-md border bg-muted/50 p-4">
           <div className="min-w-0 flex-1 font-mono text-sm break-all">
             {secret}
           </div>

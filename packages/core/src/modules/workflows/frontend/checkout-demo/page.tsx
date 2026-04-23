@@ -710,7 +710,7 @@ export default function CheckoutDemoPage() {
     const fieldDescription = fieldSchema.description
     const enumValues = fieldSchema.enum
 
-    const inputClasses = "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-sm"
+    const inputClasses = "w-full px-3 py-2 border border-gray-300 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-sm"
     const labelClasses = "block text-sm font-medium text-gray-700 mb-1"
 
     // Handle enum (select dropdown)
@@ -860,7 +860,7 @@ export default function CheckoutDemoPage() {
                 id={fieldName}
                 checked={!!formData[fieldName]}
                 onChange={(e) => handleFieldChange(fieldName, e.target.checked)}
-                className="w-4 h-4 text-yellow-600 border-gray-300 rounded focus:ring-yellow-500"
+                className="w-4 h-4 text-yellow-600 border-gray-300 rounded focus-visible:ring-ring"
               />
               <label htmlFor={fieldName} className="text-sm font-medium text-gray-700">
                 {fieldTitle}
@@ -933,7 +933,7 @@ export default function CheckoutDemoPage() {
                         id="customer-select"
                         value={selectedCustomerId}
                         onChange={(e) => setSelectedCustomerId(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-sm"
                       >
                         <option value="">-- Select a customer --</option>
                         {customers.map((customer: any) => (
@@ -950,7 +950,7 @@ export default function CheckoutDemoPage() {
                           id="currency-select"
                           value={selectedCurrency}
                           onChange={(e) => setSelectedCurrency(e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-sm"
                         >
                           <option value="USD">USD - US Dollar</option>
                           <option value="EUR">EUR - Euro</option>
@@ -991,7 +991,7 @@ export default function CheckoutDemoPage() {
                             e.target.value = '' // Reset selection
                           }
                         }}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-sm"
                         value=""
                       >
                         <option value="">-- Select a product to add --</option>
@@ -1665,7 +1665,7 @@ export default function CheckoutDemoPage() {
                           <div className="mt-3">
                             <a
                               href={`/backend/tasks/${task.id}`}
-                              className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+                              className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring"
                             >
                               Complete Task →
                             </a>

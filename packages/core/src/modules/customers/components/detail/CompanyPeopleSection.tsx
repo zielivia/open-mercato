@@ -410,7 +410,7 @@ export function CompanyPeopleSection({
         <div className="flex flex-wrap justify-end gap-2">
           {linkAction}
         </div>
-        <div className="rounded border bg-muted/20">
+        <div className="rounded border bg-muted/30">
           {people.map((person) => (
             <div
               key={person.id}

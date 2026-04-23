@@ -426,7 +426,7 @@ export function MessagesInboxPageClient() {
               </Button>
               {folderMenuOpen ? (
                 <div
-                  className="absolute right-0 z-20 mt-1 min-w-52 rounded-md border bg-background p-1 shadow"
+                  className="absolute right-0 z-dropdown mt-1 min-w-52 rounded-md border bg-background p-1 shadow"
                   role="menu"
                 >
                   {folderOptions.map((option) => {
@@ -438,7 +438,7 @@ export function MessagesInboxPageClient() {
                         type="button"
                         role="menuitemradio"
                         aria-checked={isActive}
-                        className={`flex w-full items-center gap-2 rounded px-2 py-1.5 text-left text-sm hover:bg-accent ${isActive ? 'bg-accent/60' : ''}`}
+                        className={`flex w-full items-center gap-2 rounded px-2 py-1.5 text-left text-sm hover:bg-accent ${isActive ? 'bg-accent/50' : ''}`}
                         onClick={() => {
                           setFolder(option.id)
                           setPage(1)

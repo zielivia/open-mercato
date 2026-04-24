@@ -5,8 +5,6 @@ export type AvatarSize = 'sm' | 'default' | 'md' | 'lg'
 
 export type AvatarProps = {
   name?: string
-  src?: string
-  alt?: string
   size?: AvatarSize
   className?: string
   children?: React.ReactNode
@@ -32,7 +30,7 @@ function getInitials(name: string): string {
   return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
 }
 
-export function Avatar({ name, src, alt, size = 'default', className, children }: AvatarProps) {
+export function Avatar({ name, size = 'default', className, children }: AvatarProps) {
   return (
     <span
       className={cn(
@@ -41,15 +39,7 @@ export function Avatar({ name, src, alt, size = 'default', className, children }
         className,
       )}
     >
-      {src ? (
-        <img
-          src={src}
-          alt={alt ?? name ?? ''}
-          className="h-full w-full rounded-full object-cover"
-        />
-      ) : (
-        children ?? (name ? getInitials(name) : null)
-      )}
+      {children ?? (name ? getInitials(name) : null)}
     </span>
   )
 }

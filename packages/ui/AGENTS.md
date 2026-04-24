@@ -143,9 +143,6 @@ import { Avatar, AvatarStack } from '@open-mercato/ui/primitives/avatar'
 ### Usage
 
 ```tsx
-// Photo
-<Avatar src="/avatars/jan.jpg" name="Jan Kowalski" size="md" />
-
 // Initials (auto-generated from name)
 <Avatar name="Jan Kowalski" />        // → "JK"
 <Avatar name="Copperleaf Design" />   // → "CD"
@@ -163,6 +160,7 @@ import { Avatar, AvatarStack } from '@open-mercato/ui/primitives/avatar'
 ### MUST rules
 
 - NEVER render `<div className="rounded-full bg-muted ...">` for avatars — use `Avatar`
+- NEVER add photo/image support — Avatar is initials-only by design
 - `size="sm"` uses `text-[9px]` — DS exception for tiny initials (same as notification badge count)
 - `ring-2 ring-background` is built-in — provides the border needed for `AvatarStack` overlap
 - For unknown users or empty states: render `<Avatar />` (shows blank muted circle)

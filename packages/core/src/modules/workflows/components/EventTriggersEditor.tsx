@@ -14,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@open-mercato/ui/primitives/select'
-import { Switch } from '@open-mercato/ui/primitives/switch'
+import { SwitchField } from '@open-mercato/ui/primitives/switch-field'
 import { Spinner } from '@open-mercato/ui/primitives/spinner'
 import { Badge } from '@open-mercato/ui/primitives/badge'
 import {
@@ -487,14 +487,13 @@ export function EventTriggersEditor({
             </div>
 
             {/* Enabled Switch */}
-            <div className="flex items-center gap-2">
-              <Switch
-                id="trigger-enabled"
-                checked={formValues.enabled}
-                onCheckedChange={checked => setFormValues(prev => ({ ...prev, enabled: checked }))}
-              />
-              <Label htmlFor="trigger-enabled">{t('workflows.triggers.fields.enabled')}</Label>
-            </div>
+            <SwitchField
+              id="trigger-enabled"
+              label={t('workflows.triggers.fields.enabled')}
+              flip
+              checked={formValues.enabled}
+              onCheckedChange={checked => setFormValues(prev => ({ ...prev, enabled: checked }))}
+            />
 
             {/* Filter Conditions */}
             <div className="space-y-2">

@@ -4,6 +4,7 @@ import { Search, GripVertical, X, ChevronDown } from 'lucide-react'
 import { Button } from '../../primitives/button'
 import { IconButton } from '../../primitives/icon-button'
 import { Checkbox } from '../../primitives/checkbox'
+import { Input } from '../../primitives/input'
 import { useT } from '@open-mercato/shared/lib/i18n/context'
 import {
   DndContext,
@@ -168,16 +169,14 @@ export function ColumnChooserPanel({
       </div>
 
       <div className="px-4 py-2 border-b">
-        <div className="relative">
-          <Search className="absolute left-2 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-          <input
-            type="text"
-            className="w-full rounded border bg-background pl-8 pr-2 py-1.5 text-sm"
-            placeholder={t('ui.columnChooser.search', 'Search columns...')}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
+        <Input
+          type="text"
+          size="sm"
+          leftIcon={<Search />}
+          placeholder={t('ui.columnChooser.search', 'Search columns...')}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </div>
 
       <div className="flex-1 overflow-auto">

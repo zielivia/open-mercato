@@ -4,6 +4,7 @@ import {Node} from '@xyflow/react'
 import {useEffect, useState} from 'react'
 import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle} from '@open-mercato/ui/primitives/dialog'
 import {Button} from '@open-mercato/ui/primitives/button'
+import {Input} from '@open-mercato/ui/primitives/input'
 import {Badge} from '@open-mercato/ui/primitives/badge'
 import {Alert, AlertDescription} from '@open-mercato/ui/primitives/alert'
 import {ChevronDown, Info, Plus, Trash2} from 'lucide-react'
@@ -514,12 +515,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   {t('workflows.form.stepName')} *
                 </label>
-                <input
+                <Input
                   type="text"
                   value={stepName}
                   onChange={(e) => setStepName(e.target.value)}
                   placeholder={t('workflows.form.placeholders.stepName')}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-ring"
                   autoFocus
                 />
                 <p className="text-xs text-gray-500 mt-1">
@@ -549,12 +549,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   {t('workflows.form.timeout')}
                 </label>
-                <input
+                <Input
                   type="text"
                   value={timeout}
                   onChange={(e) => setTimeout(e.target.value)}
                   placeholder={t('workflows.form.placeholders.timeout')}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-ring"
                 />
                 <p className="text-xs text-gray-500 mt-1">
                   {t('workflows.form.descriptions.timeout')}
@@ -574,12 +573,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       {t('workflows.form.assignedTo')}
                     </label>
-                    <input
+                    <Input
                       type="text"
                       value={assignedTo}
                       onChange={(e) => setAssignedTo(e.target.value)}
                       placeholder={t('workflows.form.placeholders.userId')}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-ring"
                     />
                     <p className="text-xs text-gray-500 mt-1">
                       {t('workflows.form.descriptions.assignedTo')}
@@ -590,12 +588,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       {t('workflows.form.assignedToRoles')}
                     </label>
-                    <input
+                    <Input
                       type="text"
                       value={assignedToRoles}
                       onChange={(e) => setAssignedToRoles(e.target.value)}
                       placeholder={t('workflows.form.placeholders.roles')}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-ring"
                     />
                     <p className="text-xs text-gray-500 mt-1">
                       {t('workflows.form.descriptions.assignedToRoles')}
@@ -606,12 +603,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       {t('workflows.form.formKey')}
                     </label>
-                    <input
+                    <Input
                       type="text"
                       value={formKey}
                       onChange={(e) => setFormKey(e.target.value)}
                       placeholder={t('workflows.form.placeholders.formKey')}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-ring"
                     />
                     <p className="text-xs text-gray-500 mt-1">
                       {t('workflows.form.descriptions.formKey')}
@@ -693,11 +689,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                 {/* Field Name */}
                                 <div className="pt-3">
                                   <label className="block text-xs font-medium text-gray-700 mb-1">{t('workflows.form.fieldName')} *</label>
-                                  <input
+                                  <Input
                                     type="text"
+                                    size="sm"
                                     value={field.name}
                                     onChange={(e) => updateFormField(index, 'name', e.target.value)}
-                                    className="w-full px-2 py-1.5 border border-gray-300 rounded text-xs focus-visible:ring-1 focus-visible:ring-ring focus-visible:border-ring"
                                     placeholder={t('workflows.form.placeholders.fieldName')}
                                   />
                                   <p className="text-xs text-gray-500 mt-0.5">{t('workflows.form.descriptions.fieldName')}</p>
@@ -706,11 +702,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                 {/* Field Label */}
                                 <div>
                                   <label className="block text-xs font-medium text-gray-700 mb-1">{t('workflows.form.fieldLabel')} *</label>
-                                  <input
+                                  <Input
                                     type="text"
+                                    size="sm"
                                     value={field.label}
                                     onChange={(e) => updateFormField(index, 'label', e.target.value)}
-                                    className="w-full px-2 py-1.5 border border-gray-300 rounded text-xs focus-visible:ring-1 focus-visible:ring-ring focus-visible:border-ring"
                                     placeholder={t('workflows.form.placeholders.fieldLabel')}
                                   />
                                   <p className="text-xs text-gray-500 mt-0.5">{t('workflows.form.descriptions.fieldLabel')}</p>
@@ -742,11 +738,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                 {/* Placeholder */}
                                 <div>
                                   <label className="block text-xs font-medium text-gray-700 mb-1">{t('workflows.form.placeholder')}</label>
-                                  <input
+                                  <Input
                                     type="text"
+                                    size="sm"
                                     value={field.placeholder || ''}
                                     onChange={(e) => updateFormField(index, 'placeholder', e.target.value)}
-                                    className="w-full px-2 py-1.5 border border-gray-300 rounded text-xs focus-visible:ring-1 focus-visible:ring-ring focus-visible:border-ring"
                                     placeholder={t('workflows.form.placeholders.placeholder')}
                                   />
                                 </div>
@@ -754,11 +750,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                 {/* Default Value */}
                                 <div>
                                   <label className="block text-xs font-medium text-gray-700 mb-1">{t('workflows.form.defaultValue')}</label>
-                                  <input
+                                  <Input
                                     type="text"
+                                    size="sm"
                                     value={field.defaultValue || ''}
                                     onChange={(e) => updateFormField(index, 'defaultValue', e.target.value)}
-                                    className="w-full px-2 py-1.5 border border-gray-300 rounded text-xs focus-visible:ring-1 focus-visible:ring-ring focus-visible:border-ring"
                                     placeholder={t('workflows.form.placeholders.defaultValue')}
                                   />
                                 </div>
@@ -767,11 +763,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                 {(field.type === 'select' || field.type === 'radio') && (
                                   <div>
                                     <label className="block text-xs font-medium text-gray-700 mb-1">{t('workflows.form.options')}</label>
-                                    <input
+                                    <Input
                                       type="text"
+                                      size="sm"
                                       value={field.options?.join(', ') || ''}
                                       onChange={(e) => updateFormField(index, 'options', e.target.value.split(',').map(o => o.trim()).filter(Boolean))}
-                                      className="w-full px-2 py-1.5 border border-gray-300 rounded text-xs focus-visible:ring-1 focus-visible:ring-ring focus-visible:border-ring"
                                       placeholder={t('workflows.form.placeholders.options')}
                                     />
                                     <p className="text-xs text-gray-500 mt-0.5">{t('workflows.form.descriptions.options')}</p>
@@ -903,15 +899,15 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                   <label className="block text-xs font-medium text-gray-700 mb-1">
                                     {t('workflows.form.activityId')} *
                                   </label>
-                                  <input
+                                  <Input
                                     type="text"
+                                    size="sm"
                                     value={activity.activityId}
                                     onChange={(e) => {
                                       const updated = [...stepActivities]
                                       updated[index].activityId = e.target.value
                                       setStepActivities(updated)
                                     }}
-                                    className="w-full px-2 py-1.5 border border-gray-300 rounded text-xs focus-visible:ring-1 focus-visible:ring-ring"
                                     placeholder={t('workflows.form.placeholders.activityId')}
                                   />
                                 </div>
@@ -921,15 +917,15 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                   <label className="block text-xs font-medium text-gray-700 mb-1">
                                     {t('workflows.form.activityName')} *
                                   </label>
-                                  <input
+                                  <Input
                                     type="text"
+                                    size="sm"
                                     value={activity.activityName || ''}
                                     onChange={(e) => {
                                       const updated = [...stepActivities]
                                       updated[index].activityName = e.target.value
                                       setStepActivities(updated)
                                     }}
-                                    className="w-full px-2 py-1.5 border border-gray-300 rounded text-xs focus-visible:ring-1 focus-visible:ring-ring"
                                     placeholder={t('workflows.form.placeholders.activityName')}
                                   />
                                 </div>
@@ -962,15 +958,15 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                   <label className="block text-xs font-medium text-gray-700 mb-1">
                                     {t('workflows.form.timeout')}
                                   </label>
-                                  <input
+                                  <Input
                                     type="text"
+                                    size="sm"
                                     value={activity.timeoutMs || ''}
                                     onChange={(e) => {
                                       const updated = [...stepActivities]
                                       updated[index].timeoutMs = e.target.value ? parseInt(e.target.value) : undefined
                                       setStepActivities(updated)
                                     }}
-                                    className="w-full px-2 py-1.5 border border-gray-300 rounded text-xs focus-visible:ring-1 focus-visible:ring-ring"
                                     placeholder={t('workflows.form.placeholders.timeoutMs')}
                                   />
                                   <p className="text-xs text-gray-500 mt-1">{t('workflows.form.descriptions.timeoutMs')}</p>
@@ -984,8 +980,9 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                     <div>
                                       <label className="block text-xs text-gray-600 mb-1">{t('workflows.form.maxAttempts')}</label>
-                                      <input
+                                      <Input
                                         type="number"
+                                        size="sm"
                                         value={activity.retryPolicy?.maxAttempts || 1}
                                         onChange={(e) => {
                                           const updated = [...stepActivities]
@@ -995,13 +992,13 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                         }}
                                         min="1"
                                         max="10"
-                                        className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
                                       />
                                     </div>
                                     <div>
                                       <label className="block text-xs text-gray-600 mb-1">{t('workflows.form.initialInterval')}</label>
-                                      <input
+                                      <Input
                                         type="number"
+                                        size="sm"
                                         value={activity.retryPolicy?.initialIntervalMs || 1000}
                                         onChange={(e) => {
                                           const updated = [...stepActivities]
@@ -1009,13 +1006,13 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                           updated[index].retryPolicy.initialIntervalMs = parseInt(e.target.value) || 1000
                                           setStepActivities(updated)
                                         }}
-                                        className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
                                       />
                                     </div>
                                     <div>
                                       <label className="block text-xs text-gray-600 mb-1">{t('workflows.form.backoffCoefficient')}</label>
-                                      <input
+                                      <Input
                                         type="number"
+                                        size="sm"
                                         step="0.1"
                                         value={activity.retryPolicy?.backoffCoefficient || 2}
                                         onChange={(e) => {
@@ -1024,13 +1021,13 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                           updated[index].retryPolicy.backoffCoefficient = parseFloat(e.target.value) || 2
                                           setStepActivities(updated)
                                         }}
-                                        className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
                                       />
                                     </div>
                                     <div>
                                       <label className="block text-xs text-gray-600 mb-1">{t('workflows.form.maxInterval')}</label>
-                                      <input
+                                      <Input
                                         type="number"
+                                        size="sm"
                                         value={activity.retryPolicy?.maxIntervalMs || 60000}
                                         onChange={(e) => {
                                           const updated = [...stepActivities]
@@ -1038,7 +1035,6 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                           updated[index].retryPolicy.maxIntervalMs = parseInt(e.target.value) || 60000
                                           setStepActivities(updated)
                                         }}
-                                        className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
                                       />
                                     </div>
                                   </div>
@@ -1120,12 +1116,12 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                       {t('workflows.form.workflowToInvoke')} *
                     </label>
                     <div className="flex gap-2">
-                      <input
+                      <Input
                         type="text"
                         value={subWorkflowId}
                         onChange={(e) => setSubWorkflowId(e.target.value)}
                         placeholder={t('workflows.form.placeholders.subWorkflowId')}
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-ring"
+                        className="flex-1"
                         readOnly
                       />
                       <Button
@@ -1145,12 +1141,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       {t('workflows.form.version')}
                     </label>
-                    <input
+                    <Input
                       type="number"
                       value={subWorkflowVersion}
                       onChange={(e) => setSubWorkflowVersion(e.target.value)}
                       placeholder={t('workflows.form.placeholders.version')}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-ring"
                     />
                     <p className="text-xs text-gray-500 mt-1">
                       {t('workflows.form.descriptions.subWorkflowVersion')}
@@ -1187,7 +1182,7 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                         {inputMappings.map((mapping, index) => (
                           <div key={index} className="flex gap-2 items-start">
                             <div className="flex-1">
-                              <input
+                              <Input
                                 type="text"
                                 value={mapping.key}
                                 onChange={(e) => {
@@ -1196,13 +1191,12 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                   setInputMappings(newMappings)
                                 }}
                                 placeholder={t('workflows.form.placeholders.childKey')}
-                                className="w-full px-2 py-1.5 border border-gray-300 rounded text-sm focus-visible:ring-2 focus-visible:ring-ring"
                               />
                               <p className="text-xs text-gray-500 mt-0.5">{t('workflows.form.descriptions.childKey')}</p>
                             </div>
                             <span className="text-gray-400 mt-2">→</span>
                             <div className="flex-1">
-                              <input
+                              <Input
                                 type="text"
                                 value={mapping.value}
                                 onChange={(e) => {
@@ -1211,7 +1205,6 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                   setInputMappings(newMappings)
                                 }}
                                 placeholder={t('workflows.form.placeholders.parentPath')}
-                                className="w-full px-2 py-1.5 border border-gray-300 rounded text-sm focus-visible:ring-2 focus-visible:ring-ring"
                               />
                               <p className="text-xs text-gray-500 mt-0.5">{t('workflows.form.descriptions.parentPath')}</p>
                             </div>
@@ -1262,7 +1255,7 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                         {outputMappings.map((mapping, index) => (
                           <div key={index} className="flex gap-2 items-start">
                             <div className="flex-1">
-                              <input
+                              <Input
                                 type="text"
                                 value={mapping.key}
                                 onChange={(e) => {
@@ -1271,13 +1264,12 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                   setOutputMappings(newMappings)
                                 }}
                                 placeholder={t('workflows.form.placeholders.parentKey')}
-                                className="w-full px-2 py-1.5 border border-gray-300 rounded text-sm focus-visible:ring-2 focus-visible:ring-ring"
                               />
                               <p className="text-xs text-gray-500 mt-0.5">{t('workflows.form.descriptions.parentKey')}</p>
                             </div>
                             <span className="text-gray-400 mt-2">←</span>
                             <div className="flex-1">
-                              <input
+                              <Input
                                 type="text"
                                 value={mapping.value}
                                 onChange={(e) => {
@@ -1286,7 +1278,6 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                                   setOutputMappings(newMappings)
                                 }}
                                 placeholder={t('workflows.form.placeholders.childPath')}
-                                className="w-full px-2 py-1.5 border border-gray-300 rounded text-sm focus-visible:ring-2 focus-visible:ring-ring"
                               />
                               <p className="text-xs text-gray-500 mt-0.5">{t('workflows.form.descriptions.childPath')}</p>
                             </div>
@@ -1322,12 +1313,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       {t('workflows.form.signalName')} *
                     </label>
-                    <input
+                    <Input
                       type="text"
                       value={signalName}
                       onChange={(e) => setSignalName(e.target.value)}
                       placeholder={t('workflows.form.placeholders.signalName')}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-ring"
                     />
                     <p className="text-xs text-gray-500 mt-1">
                       {t('workflows.form.descriptions.signalName')}
@@ -1338,12 +1328,11 @@ export function NodeEditDialog({ node, isOpen, onClose, onSave, onDelete }: Node
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       {t('workflows.form.timeout')}
                     </label>
-                    <input
+                    <Input
                       type="text"
                       value={signalTimeout}
                       onChange={(e) => setSignalTimeout(e.target.value)}
                       placeholder={t('workflows.form.placeholders.signalTimeout')}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-ring"
                     />
                     <p className="text-xs text-gray-500 mt-1">
                       {t('workflows.form.descriptions.signalTimeout')}

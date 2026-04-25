@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useRouter } from 'next/navigation'
 import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender, type ColumnDef, type SortingState, type Column as TableColumn, type VisibilityState, type RowSelectionState } from '@tanstack/react-table'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { RefreshCw, Loader2, SlidersHorizontal, MoreHorizontal, Circle, Filter, Columns3 } from 'lucide-react'
+import { RefreshCw, Loader2, SlidersHorizontal, MoreHorizontal, Circle, Filter, Columns3, ChevronUp, ChevronDown, ChevronsUpDown } from 'lucide-react'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../primitives/table'
 import { Button } from '../primitives/button'
 import { Checkbox } from '../primitives/checkbox'
@@ -624,7 +624,6 @@ function ExportMenu({ config, sections }: { config: DataTableExportConfig; secti
       <Button
         ref={buttonRef}
         variant="outline"
-        size="sm"
         type="button"
         onClick={() => {
           if (disabled) return
@@ -1977,7 +1976,7 @@ export function DataTable<T>({
     const injectedOnly = injectedFilters.filter((f) => !existing.has(f.id) && !cfOnly.some((cf) => cf.id === f.id))
     const combined: FilterDef[] = [...baseList, ...cfOnly, ...injectedOnly]
     const perspectiveButton = canUsePerspectives ? (
-      <Button variant="outline" className="h-9" onClick={() => setPerspectiveOpen(true)}>
+      <Button variant="outline" onClick={() => setPerspectiveOpen(true)}>
         <SlidersHorizontal className="mr-2 h-4 w-4" />
         {t('ui.dataTable.perspectives.button', 'Perspectives')}
       </Button>
@@ -2018,7 +2017,6 @@ export function DataTable<T>({
             <Button
               key={action.id}
               type="button"
-              size="sm"
               variant="outline"
               title={label}
               aria-label={label}
@@ -2037,7 +2035,6 @@ export function DataTable<T>({
             <Button
               key={action.id}
               type="button"
-              size="sm"
               variant={action.destructive ? 'destructive' : 'outline'}
               onClick={() => void runPropBulkAction(action)}
             >
@@ -2300,10 +2297,12 @@ export function DataTable<T>({
                     >
                       {flexRender(header.column.columnDef.header, header.getContext())}
                       {sortable && header.column.getCanSort?.() ? (
-                        <span className="ml-1 inline-flex flex-col text-overline leading-none gap-px">
-                          <span className={header.column.getIsSorted() === 'asc' ? 'text-foreground' : 'text-muted-foreground/40'}>▲</span>
-                          <span className={header.column.getIsSorted() === 'desc' ? 'text-foreground' : 'text-muted-foreground/40'}>▼</span>
-                        </span>
+                        (() => {
+                          const sortState = header.column.getIsSorted()
+                          if (sortState === 'asc') return <ChevronUp className="ml-1 size-3.5 shrink-0 text-foreground" aria-hidden="true" />
+                          if (sortState === 'desc') return <ChevronDown className="ml-1 size-3.5 shrink-0 text-foreground" aria-hidden="true" />
+                          return <ChevronsUpDown className="ml-1 size-3.5 shrink-0 text-muted-foreground/50" aria-hidden="true" />
+                        })()
                       ) : null}
                     </Button>
                   )

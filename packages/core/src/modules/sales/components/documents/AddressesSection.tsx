@@ -8,6 +8,13 @@ import { apiCall, apiCallOrThrow } from '@open-mercato/ui/backend/utils/apiCall'
 import { createCrud } from '@open-mercato/ui/backend/utils/crud'
 import { ErrorMessage, LoadingMessage, TabEmptyState } from '@open-mercato/ui/backend/detail'
 import { Button } from '@open-mercato/ui/primitives/button'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@open-mercato/ui/primitives/select'
 import { Switch } from '@open-mercato/ui/primitives/switch'
 import { useT } from '@open-mercato/shared/lib/i18n/context'
 import { useConfirmDialog } from '@open-mercato/ui/backend/confirm-dialog'
@@ -853,26 +860,27 @@ export function SalesDocumentAddressesSection({
     onChange: (next: string | null) => void,
     disabled: boolean
   ) => (
-    <select
-      className="w-full rounded border px-2 py-2 text-sm"
-      value={value}
-      onChange={(evt) => onChange(evt.target.value || null)}
-      disabled={disabled}
-    >
-      <option value="">
-        {addressesLoading
-          ? t('sales.documents.form.address.loading', 'Loading addresses…')
-          : t('sales.documents.form.address.placeholder', 'Select address')}
-      </option>
-      {options.map((addr) => {
-        const optionLabel = addr.summary ? `${addr.label} — ${addr.summary}` : addr.label
-        return (
-          <option key={addr.id} value={addr.id}>
-            {optionLabel}
-          </option>
-        )
-      })}
-    </select>
+    <Select value={value || undefined} onValueChange={(next) => onChange(next || null)} disabled={disabled}>
+      <SelectTrigger>
+        <SelectValue
+          placeholder={
+            addressesLoading
+              ? t('sales.documents.form.address.loading', 'Loading addresses…')
+              : t('sales.documents.form.address.placeholder', 'Select address')
+          }
+        />
+      </SelectTrigger>
+      <SelectContent>
+        {options.map((addr) => {
+          const optionLabel = addr.summary ? `${addr.label} — ${addr.summary}` : addr.label
+          return (
+            <SelectItem key={addr.id} value={addr.id}>
+              {optionLabel}
+            </SelectItem>
+          )
+        })}
+      </SelectContent>
+    </Select>
   )
 
   return (

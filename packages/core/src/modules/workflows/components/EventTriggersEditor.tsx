@@ -7,6 +7,13 @@ import { Button } from '@open-mercato/ui/primitives/button'
 import { Input } from '@open-mercato/ui/primitives/input'
 import { Textarea } from '@open-mercato/ui/primitives/textarea'
 import { Label } from '@open-mercato/ui/primitives/label'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@open-mercato/ui/primitives/select'
 import { Switch } from '@open-mercato/ui/primitives/switch'
 import { Spinner } from '@open-mercato/ui/primitives/spinner'
 import { Badge } from '@open-mercato/ui/primitives/badge'
@@ -509,17 +516,21 @@ export function EventTriggersEditor({
                     placeholder={t('workflows.triggers.placeholders.status')}
                     className="w-full sm:w-1/3"
                   />
-                  <select
+                  <Select
                     value={fc.operator}
-                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => updateFilterCondition(index, 'operator', e.target.value)}
-                    className="h-10 w-full sm:w-[140px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    onValueChange={(value) => updateFilterCondition(index, 'operator', value)}
                   >
-                    {FILTER_OPERATOR_KEYS.map(op => (
-                      <option key={op} value={op}>
-                        {t(`workflows.triggers.operators.${op}`)}
-                      </option>
-                    ))}
-                  </select>
+                    <SelectTrigger size="lg" className="w-full sm:w-[140px]">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {FILTER_OPERATOR_KEYS.map(op => (
+                        <SelectItem key={op} value={op}>
+                          {t(`workflows.triggers.operators.${op}`)}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <Input
                     value={fc.value}
                     onChange={e => updateFilterCondition(index, 'value', e.target.value)}

@@ -255,7 +255,7 @@ test.describe('TC-UMES-004: Phase E-H completion', () => {
     await page.waitForLoadState('domcontentloaded')
 
     await requireCustomerDataTableInjections(page)
-    await page.getByRole('button', { name: 'Customize columns' }).click()
+    await page.getByTestId('data-table-open-views-sidebar').click()
     await expect(page.getByText(/Example priority|example\.priority\.column/).first()).toBeVisible({ timeout: 10_000 })
   })
 

@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useRouter } from 'next/navigation'
 import { useReactTable, getCoreRowModel, getSortedRowModel, flexRender, type ColumnDef, type SortingState, type Column as TableColumn, type VisibilityState, type RowSelectionState } from '@tanstack/react-table'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { RefreshCw, Loader2, SlidersHorizontal, MoreHorizontal, Circle, Filter, Columns3, ChevronUp, ChevronDown, ChevronsUpDown, Check } from 'lucide-react'
+import { RefreshCw, Loader2, SlidersHorizontal, Circle, Filter, Columns3, ChevronUp, ChevronDown, ChevronsUpDown, Check } from 'lucide-react'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../primitives/table'
 import { Button } from '../primitives/button'
 import { Checkbox } from '../primitives/checkbox'
@@ -1972,7 +1972,7 @@ export function DataTable<T>({
         title={t('ui.dataTable.pagination.cache.title', 'Cache {status}', { status: normalizedCacheStatus.toUpperCase() })}
       >
         <Circle
-          className={`h-3.5 w-3.5 ${normalizedCacheStatus === 'hit' ? 'text-emerald-500' : 'text-amber-500'}`}
+          className={`h-3.5 w-3.5 ${normalizedCacheStatus === 'hit' ? 'text-status-success-icon' : 'text-status-warning-icon'}`}
           strokeWidth={3}
         />
         <span className="sr-only">{t('ui.dataTable.pagination.cache.srOnly', 'Cache {status}', { status: normalizedCacheStatus.toUpperCase() })}</span>
@@ -2009,9 +2009,7 @@ export function DataTable<T>({
               ? t('ui.dataTable.pagination.resultsWithDuration', 'Showing {start} to {end} of {total} results in {duration}', { start: startItem, end: endItem, total: pagination.total, duration: durationLabel })
               : t('ui.dataTable.pagination.results', 'Showing {start} to {end} of {total} results', { start: startItem, end: endItem, total: pagination.total })
           }
-          formatPageSizeLabel={(size) =>
-            `${size} ${t('ui.dataTable.pagination.perPage', 'per page')}`
-          }
+          formatPageSizeLabel={(size) => String(size)}
           aria-label={t('ui.dataTable.pagination.navAriaLabel', 'Table pagination')}
           className="flex-1"
         />
@@ -2566,19 +2564,6 @@ export function DataTable<T>({
                         <RefreshCw className="h-4 w-4" />
                       )}
                       <span className="sr-only">{refreshButtonConfig.label}</span>
-                    </Button>
-                  ) : null}
-                  {canUsePerspectives ? (
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => setPerspectiveOpen(true)}
-                      aria-label={t('ui.dataTable.customizeColumns.ariaLabel', 'Customize columns')}
-                      title={t('ui.dataTable.customizeColumns.title', 'Customize columns')}
-                    >
-                      <MoreHorizontal className="h-4 w-4" />
-                      <span className="sr-only">{t('ui.dataTable.customizeColumns.srOnly', 'Customize columns')}</span>
                     </Button>
                   ) : null}
                   {exportConfig && hasExport ? <ExportMenu config={exportConfig} sections={resolvedExportSections} /> : null}
